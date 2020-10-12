@@ -13,7 +13,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v4.1.1" />
-    <title>Hitesh Pattanayak</title>
+    <title>{{ blogdetail.title }}</title>
 
     <link
       rel="canonical"
@@ -52,7 +52,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Hitesh Pattanayak</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Hitesh Pattanayak</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -70,59 +70,20 @@
             <a class="nav-link" href="https://hitesh-resume.herokuapp.com/"
               >Resume</a
             >
-            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+            <a class="nav-link active" href="#">Blog</a>
           </div>
         </div>
       </nav>
     </header>
 
     <main role="main">
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1>Hi, I'm Hitesh.</h1>
-          <p class="lead text-muted">
-            Hey, my name is Hitesh Pattanayak. I am project associate @
-            Cognizant. I am a backend developer, looking for a transition.
-          </p>
-          <p>
-            <a
-              href="mailto:hiteshkumarpattanayak03@gmail.com"
-              class="btn btn-primary my-2"
-              >Email Me</a
-            >
-          </p>
-          <img src="{% static 'Top.jpg' %}" height="150" width="150" />
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-            {% for job in jobs.all %}
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                {% if job.image %}
-                <img
-                  class="card-img-top"
-                  src="{{ job.image.url }}"
-                  alt="{{ job.title }}"
-                />
-                {% endif %}
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary }}</p>
-                  <div
-                    class="d-flex justify-content-between align-items-center"
-                  >
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {% endfor %}
-          </div>
-        </div>
+      <div class="container">
+        <h1 class="text-center pt-3">{{blogdetail.title}}</h1>
+        <p class="text-center">{{ blogdetail.pub_date }}</p>
+        <img class="img-fluid" src="{{ blogdetail.image.url }}" alt="" />
+        <br />
+        <br />
+        <p>{{ blogdetail.body }}</p>
       </div>
     </main>
 
