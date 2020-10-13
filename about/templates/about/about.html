@@ -13,7 +13,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v4.1.1" />
-    <title>Hitesh's Blog</title>
+    <title>About Me</title>
 
     <link
       rel="canonical"
@@ -27,6 +27,9 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
 
     <meta name="theme-color" content="#563d7c" />
 
@@ -66,38 +69,74 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="{% url 'about' %}">About Me</a>
+            <a class="nav-link active" href="#">About Me</a>
             <a class="nav-link" href="https://hitesh-resume.herokuapp.com/"
               >Resume</a
             >
-            <a class="nav-link active" href="#">Blog</a>
+            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
           </div>
         </div>
       </nav>
     </header>
 
     <main role="main">
-      <div class="container">
-        <h1 class="text-center pt-3">Welcome to our Blog</h1>
-        <br />
-        <br />
-        <h2>Latest Posts</h2>
-        <hr />
-        {% for blog in blogs.all %}
-        <a href="{% url 'blogdetail' blog.id %}"><h3>{{blog.title}}</h3></a>
-        {{ blog.pub_date_pretty }}
-        <br />
-        <br />
-        <img
-          class="img-fluid"
-          src="{{ blog.image.url }}"
-          alt=""
-          height="200"
-          width="200"
-        />
-        <br />
-        <p>{{ blog.summary }}</p>
-        {% endfor %}
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1>I'm Hitesh Pattanayak. Project Associate at Cognizant. I serve as a backend engineer.</h1>
+          <p class="lead text-muted">
+            {{ about.bio }}
+          </p>
+          
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <h3> Below are the projects that I have been associated with : </h3>
+          <div class="row">
+
+            {% for project in projects %}
+
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                  <p class="card-text"><a href="{% url 'projectdetail' project.id %}" > {{ project.headline }} </a></p>
+                  <p>
+                    Start Date : {{ project.start_date }}
+                  </p>
+                  <p>
+                    End Date : {{ project.end_date }}
+                  </p>
+                  <p>
+                    Organization : {{ project.organization }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <h3> Below are the skills that I possess : </h3>
+          <div class="row">
+
+            {% for skill in skills %}
+
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                  <p class="card-text"> <strong> {{ skill.description }} </strong>  {{ skill.rate }} / 5 </p>
+                </div>
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
       </div>
     </main>
 

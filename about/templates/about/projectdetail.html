@@ -13,7 +13,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v4.1.1" />
-    <title>Hitesh's Blog</title>
+    <title>{{ project.headline }}</title>
 
     <link
       rel="canonical"
@@ -66,11 +66,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="{% url 'about' %}">About Me</a>
+            <a class="nav-link active" href="{% url 'about' %}">About Me</a>
             <a class="nav-link" href="https://hitesh-resume.herokuapp.com/"
               >Resume</a
             >
-            <a class="nav-link active" href="#">Blog</a>
+            <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
           </div>
         </div>
       </nav>
@@ -78,25 +78,17 @@
 
     <main role="main">
       <div class="container">
-        <h1 class="text-center pt-3">Welcome to our Blog</h1>
+        <h1 class="text-center pt-3">{{project.headline}}</h1>
+        <p class="text-center">{{ project.start_date }} - {{ project.end_date }}</p>
+        <img class="img-fluid" src="{{ blogdetail.image.url }}" alt="" />
         <br />
         <br />
-        <h2>Latest Posts</h2>
-        <hr />
-        {% for blog in blogs.all %}
-        <a href="{% url 'blogdetail' blog.id %}"><h3>{{blog.title}}</h3></a>
-        {{ blog.pub_date_pretty }}
-        <br />
-        <br />
-        <img
-          class="img-fluid"
-          src="{{ blog.image.url }}"
-          alt=""
-          height="200"
-          width="200"
-        />
-        <br />
-        <p>{{ blog.summary }}</p>
+        
+        {% for point in project_points %}
+        <ul>
+            <li>{{ point }}</li> 
+        </ul>
+        
         {% endfor %}
       </div>
     </main>

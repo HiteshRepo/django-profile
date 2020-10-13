@@ -28,6 +28,9 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+
     <meta name="theme-color" content="#563d7c" />
 
     <style>
@@ -66,7 +69,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="https://github.com/HiteshRepo">Github</a>
+            <a class="nav-link" href="{% url 'about' %}">About Me</a>
             <a class="nav-link" href="https://hitesh-resume.herokuapp.com/"
               >Resume</a
             >
@@ -92,6 +95,25 @@
             >
           </p>
           <img src="{% static 'Top.jpg' %}" height="150" width="150" />
+          <br />
+          <div class="icons">
+            <a href="https://twitter.com/hitesh110393">
+              <i class="fab fa-twitter fa-2x"></i>
+            </a>
+            <a href="#!">
+              <i class="fab fa-facebook fa-2x"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/hitesh-pattanayak-52290b160/">
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a href="https://github.com/HiteshRepo/">
+              <i class="fab fa-github fa-2x"></i>
+            </a>
+          </div>
+        <div>
+          <a href="{% static 'Hitesh Pattanayak - Resume.pdf' %}" download="Resume.pdf">Download Resume</a>
+        </div>
+          <br />
         </div>
       </section>
 
@@ -107,10 +129,23 @@
                   class="card-img-top"
                   src="{{ job.image.url }}"
                   alt="{{ job.title }}"
+                  height="200"
+                  width="200"
                 />
                 {% endif %}
                 <div class="card-body">
                   <p class="card-text">{{ job.summary }}</p>
+                  {% if job.github %}
+                  <p>
+                    Github : <a href="{{ job.github }}">{{ job.github }}</a>
+                  </p>
+                  {% else %}
+                  <p>Github : Unavailable</p>
+                  {% endif %} {% if job.link %}
+                  <p>Site-Link : <a href="{{ job.link }}">{{ job.link }}</a></p>
+                  {% else %}
+                  <p>Site-Link : Unavailable</p>
+                  {% endif %}
                   <div
                     class="d-flex justify-content-between align-items-center"
                   >
