@@ -82,16 +82,15 @@
     <main role="main">
       <section class="jumbotron text-center">
         <div class="container">
-          <h1>Hi, I'm Hitesh.</h1>
+          <h1>Hi, I'm Hitesh. This is a django website.</h1>
           <p class="lead text-muted">
-            Hey, my name is Hitesh Pattanayak. I am project associate @
-            Cognizant. I am a backend developer, looking for a transition.
+            I am project associate @ Cognizant. I am a backend developer, looking for a transition.
           </p>
           <p>
             <a
-              href="mailto:hiteshkumarpattanayak03@gmail.com"
+              href="{% url 'reachme' %}"
               class="btn btn-primary my-2"
-              >Email Me</a
+              >Reach Me</a
             >
           </p>
           <img src="{% static 'Top.jpg' %}" height="150" width="150" />
@@ -119,6 +118,8 @@
 
       <div class="album py-5 bg-light">
         <div class="container">
+          <h3>Latest personal projects : </h3>
+          <br>
           <div class="row">
             {% for job in jobs.all %}
 
@@ -146,11 +147,11 @@
                   {% else %}
                   <p>Site-Link : Unavailable</p>
                   {% endif %}
-                  <div
+                  <!-- <div
                     class="d-flex justify-content-between align-items-center"
                   >
                     <small class="text-muted">9 mins</small>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

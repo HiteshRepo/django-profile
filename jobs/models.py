@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.timezone import utc
 # Create your models here.
 
 
@@ -12,3 +12,9 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+
+    # def get_time_diff(self):
+    #     if self.time_posted:
+    #         now = datetime.datetime.utcnow().replace(tzinfo=utc)
+    #         timediff = now - self.time_posted
+    #         return timediff.total_seconds()

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
     'blog.apps.BlogConfig',
     'about.apps.AboutConfig',
+    'hitcount',
 ]
 
 MIDDLEWARE = [
