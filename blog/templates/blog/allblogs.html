@@ -78,26 +78,30 @@
 
     <main role="main">
       <div class="container">
-        <h1 class="text-center pt-3">Welcome to our Blog</h1>
-        <br />
-        <br />
-        <h2>Latest Posts</h2>
-        <hr />
-        {% for blog in blogs.all %}
-        <a href="{% url 'blogdetail' blog.id %}"><h3>{{blog.title}}</h3></a>
-        {{ blog.pub_date_pretty }}
-        <br />
-        <br />
-        <img
-          class="img-fluid"
-          src="{{ blog.image.url }}"
-          alt=""
-          height="200"
-          width="200"
-        />
-        <br />
-        <p>{{ blog.summary }}</p>
-        {% endfor %}
+        {% if blogs.all.count > 0 %}
+          <h1 class="text-center pt-3">Welcome to our Blog</h1>
+          <br />
+          <br />
+          <h2>Latest Posts</h2>
+          <hr />
+          {% for blog in blogs.all %}
+          <a href="{% url 'blogdetail' blog.id %}"><h3>{{blog.title}}</h3></a>
+          {{ blog.pub_date_pretty }}
+          <br />
+          <br />
+          <img
+            class="img-fluid"
+            src="{{ blog.image.url }}"
+            alt=""
+            height="200"
+            width="200"
+          />
+          <br />
+          <p>{{ blog.summary }}</p>
+          {% endfor %}
+        {% else %}
+          <h1>Under maintainance, blogs will come up soon...</h1>
+        {% endif %}
       </div>
     </main>
 
