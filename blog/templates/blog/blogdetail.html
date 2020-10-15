@@ -83,7 +83,7 @@
         <img class="img-fluid" src="{{ blogdetail.image.url }}" alt="" />
         <br />
         <br />
-        <p>{{ blogdetail.body }}</p>
+        <p>{{ blogdetail.body | safe }}</p>
       </div>
     </main>
 
