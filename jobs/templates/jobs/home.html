@@ -125,7 +125,15 @@
 
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                {% if job.image %}
+                {% if job.summary_img %}
+                <img
+                  class="card-img-top"
+                  src="{% static job.summary_img %}"
+                  alt="{{ job.title }}"
+                  height="200"
+                  width="200"
+                />
+                {%else%}
                 <img
                   class="card-img-top"
                   src="{{ job.image.url }}"
@@ -136,7 +144,7 @@
                 {% endif %}
                 <div class="card-body">
                   <p class="card-text"><strong>{{ job.title }}</strong></p>
-                  <p class="card-text">{{ job.summary }}</p>
+                  <p class="card-text">{{ job.summary_text }}</p>
                   {% if job.github %}
                   <p>
                     Github : <a href="{{ job.github }}">{{ job.github }}</a>
