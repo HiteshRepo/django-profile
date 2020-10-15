@@ -80,10 +80,15 @@
       <div class="container">
         <h1 class="text-center pt-3">{{blogdetail.title}}</h1>
         <p class="text-center">{{ blogdetail.pub_date }}</p>
+        
+        {% if blogdetail.body_img %}
+        <img class="img-fluid" src="{{ blogdetail.body_img }}" alt="" />
+        {% else %}
         <img class="img-fluid" src="{{ blogdetail.image.url }}" alt="" />
+        {% endif %}
         <br />
         <br />
-        <p>{{ blogdetail.body | safe }}</p>
+        <p>{{ blogdetail.body_text | safe }}</p>
       </div>
     </main>
 

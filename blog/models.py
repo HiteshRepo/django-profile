@@ -16,6 +16,15 @@ class Blog(models.Model):
 
         return my_string
 
+    def body_text(self):
+        return self.body.split('image_static')[0]
+
+    def body_img(self):
+        if(len(self.body.split('image_static')) > 1):
+            return self.body.split('image_static')[1].replace('=', '').strip()
+        else:
+            return None
+
     def pub_date_pretty(self):
         return self.pub_date.strftime('%b %e %Y')
 
