@@ -125,10 +125,10 @@
 
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
-                {% if job.summary_img %}
+                {% if job.image %}
                 <img
                   class="card-img-top"
-                  src="{% static job.summary_img %}"
+                  src="{{ job.image.url }}"
                   alt="{{ job.title }}"
                   height="200"
                   width="200"
@@ -136,7 +136,7 @@
                 {%else%}
                 <img
                   class="card-img-top"
-                  src="{{ job.image.url }}"
+                  src="{% static job.summary_img %}"
                   alt="{{ job.title }}"
                   height="200"
                   width="200"
