@@ -97,7 +97,7 @@
             width="200"
           />
           <br />
-          <p>{{ blog.summary }}</p>
+          <p>{{ blog.summary | safe }}</p>
           {% endfor %}
         {% else %}
           <h1>Under maintainance, blogs will come up soon...</h1>
