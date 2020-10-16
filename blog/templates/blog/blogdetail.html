@@ -82,7 +82,7 @@
         <p class="text-center">{{ blogdetail.pub_date }}</p>
         
         {% if blogdetail.body_img %}
-        <img class="img-fluid" src="{{ blogdetail.body_img }}" alt="" />
+        <img class="img-fluid" src="{% static blogdetail.body_img %}" alt="" />
         {% else %}
         <img class="img-fluid" src="{{ blogdetail.image.url }}" alt="" />
         {% endif %}
